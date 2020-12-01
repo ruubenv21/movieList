@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>movie-details</ion-title>
+    <ion-title><p id="titulo">Detalles de la pelicula</p></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngIf="movie != null">
+    <ion-card-header>
+      <ion-card-title>
+        {{movie.Title}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>
+        <strong>Release date:</strong> {{movie.Released}}
+      </ion-label>
+      <br>
+      <ion-label>
+        <strong>Laguage:</strong> {{movie.Language}}
+      </ion-label>
+      <br>
+      <ion-label>
+        <strong>Plot</strong>: {{movie.Plot}}
+      </ion-label>
+      <br>
+      <ion-label>
+        <strong>Duration:</strong> {{movie.Runtime}}
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

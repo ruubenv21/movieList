@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>movies</ion-title>
+    <ion-title><p id="titulo">Peliculas</p></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div id="container">
+    <ion-card>
+      <ion-card-content>
+        <ion-input id="buscar" type="text" placeholder="Introduce titulo para buscar..." #title></ion-input>
+        <ion-buttons>
+          <ion-button id="botonBuscar" (click)="search(title)">Buscar</ion-button>
+        </ion-buttons>
+        <ion-list id="lista" *ngIf="correcto && correcto == 'True' && movies && movies.length > 0; else noResults">
+          <ion-item class="result" *ngFor="let movie of movies" [routerLink]="['/movies', movie.imdbID]">
+            <ion-label>{{movie.Title}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ng-template #noResults>
+      <ion-label class="result" *ngIf="correcto && correcto == 'False'">No hay resultados</ion-label>
+    </ng-template>
+  </div>
 </ion-content>
